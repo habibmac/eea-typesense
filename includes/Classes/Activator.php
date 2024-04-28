@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginClassName\Classes;
+namespace Galantis\Typesense\Classes;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -41,14 +41,14 @@ class Activator
         * and write your own query at createUserFavorite function
         */
 
-        $this->sampleTable();
+        // $this->sampleTable();
     }
 
     public function sampleTable()
     {
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
-        $table_name = $wpdb->prefix . 'pluginlowercase_user_favorites';
+        $table_name = $wpdb->prefix . 'galantis_typesense_user_favorites';
         $sql = "CREATE TABLE $table_name (
             id int(10) NOT NULL AUTO_INCREMENT,
             user_id int(10) NOT NULL,

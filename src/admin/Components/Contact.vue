@@ -9,15 +9,3 @@
         </div>
   </div>
 </template>
-
-<script type="module">
-export default {
-    name: 'Contact',
-    data() {
-        return {
-            page: "contact"
-        }
-    },
-
-}
-</script>

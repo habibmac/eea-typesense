@@ -1,23 +1,24 @@
 <?php
 
 /**
- * Plugin Name: PluginName
- * Plugin URI: http://wpminers.com/
- * Description: A sample WordPress plugin to implement Vue with tailwind.
- * Author: Hasanuzzaman Shamim
- * Author URI: http://hasanuzzaman.com/
+ * Plugin Name: Galantis - Typesense
+ * Plugin URI: https://galanesia.com/
+ * Description: A plugin for Galantis to manage Typesense search engine
+ * Author: mc
+ * Author URI: https://galanesia.com/
  * Version: 1.0.6
- * Text Domain: pluginslug
+ * Text Domain: galantis-typesense
  */
-define('PLUGIN_CONST_URL', plugin_dir_url(__FILE__));
-define('PLUGIN_CONST_DIR', plugin_dir_path(__FILE__));
 
-define('PLUGIN_CONST_VERSION', '1.0.5');
+define('GALANTIS_TYPESENSE_URL', plugin_dir_url(__FILE__));
+define('GALANTIS_TYPESENSE_DIR', plugin_dir_path(__FILE__));
+
+define('GALANTIS_TYPESENSE_VERSION', '1.0.5');
 
 // This will automatically update, when you run dev or production
-define('PLUGIN_CONST_DEVELOPMENT', 'yes');
+define('GALANTIS_TYPESENSE_DEVELOPMENT', 'yes');
 
-class PluginClassName {
+class GalantisTypesense {
     public function boot()
     {
         $this->loadClasses();
@@ -30,7 +31,7 @@ class PluginClassName {
 
     public function loadClasses()
     {
-        require PLUGIN_CONST_DIR . 'includes/autoload.php';
+        require GALANTIS_TYPESENSE_DIR . 'includes/autoload.php';
     }
 
     public function renderMenu()
@@ -41,23 +42,23 @@ class PluginClassName {
             }
             global $submenu;
             add_menu_page(
-                'PluginClassName',
-                'PluginName',
+                'GalantisTypesense',
+                'Galantis Typesense',
                 'manage_options',
-                'pluginslug.php',
+                'galantis-typesense.php',
                 array($this, 'renderAdminPage'),
                 'dashicons-editor-code',
                 25
             );
-            $submenu['pluginslug.php']['dashboard'] = array(
+            $submenu['galantis-typesense.php']['dashboard'] = array(
                 'Dashboard',
                 'manage_options',
-                'admin.php?page=pluginslug.php#/',
+                'admin.php?page=galantis-typesense.php#/',
             );
-            $submenu['pluginslug.php']['contact'] = array(
+            $submenu['galantis-typesense.php']['contact'] = array(
                 'Contact',
                 'manage_options',
-                'admin.php?page=pluginslug.php#/contact',
+                'admin.php?page=galantis-typesense.php#/contact',
             );
         });
     }
@@ -66,29 +67,29 @@ class PluginClassName {
      * Main admin Page where the Vue app will be rendered
      * For translatable string localization you may use like this
      * 
-     *      add_filter('pluginlowercase/frontend_translatable_strings', function($translatable){
-     *          $translatable['world'] = __('World', 'pluginslug');
+     *      add_filter('galantis_typesense/frontend_translatable_strings', function($translatable){
+     *          $translatable['world'] = __('World', 'galantis-typesense');
      *          return $translatable;
      *      }, 10, 1);
      */
     public function renderAdminPage()
     {
-        $loadAssets = new \PluginClassName\Classes\LoadAssets();
+        $loadAssets = new \Galantis\Typesense\Classes\LoadAssets();
         $loadAssets->admin();
 
-        $translatable = apply_filters('pluginlowercase/frontend_translatable_strings', array(
-            'hello' => __('Hello', 'pluginslug'),
+        $translatable = apply_filters('galantis_typesense/frontend_translatable_strings', array(
+            'hello' => __('Hello', 'galantis-typesense'),
         ));
 
-        $pluginlowercase = apply_filters('pluginlowercase/admin_app_vars', array(
-            'assets_url' => PLUGIN_CONST_URL . 'assets/',
+        $galantis_typesense = apply_filters('galantis_typesense/admin_app_vars', array(
+            'assets_url' => GALANTIS_TYPESENSE_URL . 'assets/',
             'ajaxurl' => admin_url('admin-ajax.php'),
             'i18n' => $translatable
         ));
 
-        wp_localize_script('pluginlowercase-script-boot', 'pluginlowercaseAdmin', $pluginlowercase);
+        wp_localize_script('galantis-typesense-script-boot', 'galantisTypesenseAdmin', $galantis_typesense);
 
-        echo '<div class="pluginlowercase-admin-page" id="pluginlowercase_app">
+        echo '<div class="galantis_typesense-admin-page" id="galantis_typesense_app">
             <div class="main-menu text-white-200 bg-wheat-600 p-4">
                 <router-link to="/">
                     Home
@@ -106,13 +107,13 @@ class PluginClassName {
     * NB: text-domain should match exact same as plugin directory name (Plugin Name)
     * WordPress plugin convention: if plugin name is "My Plugin", then text-domain should be "my-plugin"
     * 
-    * For PHP you can use __() or _e() function to translate text like this __('My Text', 'pluginslug')
+    * For PHP you can use __() or _e() function to translate text like this __('My Text', 'galantis-typesense')
     * For Vue you can use $t('My Text') to translate text, You must have to localize "My Text" in PHP first
     * Check example in "renderAdminPage" function, how to localize text for Vue in i18n array
     */
     public function loadTextDomain()
     {
-        load_plugin_textdomain('pluginslug', false, basename(dirname(__FILE__)) . '/languages');
+        load_plugin_textdomain('galantis-typesense', false, basename(dirname(__FILE__)) . '/languages');
     }
 
 
@@ -123,7 +124,7 @@ class PluginClassName {
     {
         add_action('admin_init', function () {
             $disablePages = [
-                'pluginslug.php',
+                'galantis-typesense.php',
             ];
 
             if (isset($_GET['page']) && in_array($_GET['page'], $disablePages)) {
@@ -140,8 +141,8 @@ class PluginClassName {
     public function ActivatePlugin()
     {
         register_activation_hook(__FILE__, function ($newWorkWide) {
-            require_once(PLUGIN_CONST_DIR . 'includes/Classes/Activator.php');
-            $activator = new \PluginClassName\Classes\Activator();
+            require_once(GALANTIS_TYPESENSE_DIR . 'includes/Classes/Activator.php');
+            $activator = new \Galantis\Typesense\Classes\Activator();
             $activator->migrateDatabases($newWorkWide);
         });
     }
@@ -156,7 +157,7 @@ class PluginClassName {
     }
 }
 
-(new PluginClassName())->boot();
+(new GalantisTypesense())->boot();
 
 
 

@@ -6,9 +6,9 @@ glob("plugin-entry.php", function(err, files) {
         files.forEach(function(item, index, array) {
             const data = fs.readFileSync(item, 'utf8');
             const mapObj = {
-                PLUGIN_CONST_DEVELOPMENT: "PLUGIN_CONST_PRODUCTION"
+                GALANTIS_TYPESENSE_DEVELOPMENT: "GALANTIS_TYPESENSE_PRODUCTION"
             };
-            const result = data.replace(/PLUGIN_CONST_DEVELOPMENT/gi, function (matched) {
+            const result = data.replace(/GALANTIS_TYPESENSE_DEVELOPMENT/gi, function (matched) {
                 return mapObj[matched];
             });
             fs.writeFile(item, result, 'utf8', function (err) {

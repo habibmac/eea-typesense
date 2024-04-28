@@ -11,7 +11,6 @@ import {
 
 const appStartTime = new Date();
 
-
 export default class AppMixins {
     constructor() {
         this.doAction = doAction;
@@ -21,7 +20,7 @@ export default class AppMixins {
         this.removeAllActions = removeAllActions;
         //
         this.AJAX = ajax;
-        this.appVars = window.PluginClassNameAdmin;
+        this.appVars = window.galantisTypesenseAdmin;
         this.app = this.extendVueConstructor();
     }
 
@@ -50,7 +49,7 @@ export default class AppMixins {
                     document.title = title;
                 },
                 $t(str) {
-                    let transString = pluginlowercaseAdmin.i18n[str];
+                    let transString = galantisTypesenseAdmin.i18n[str];
                     if (transString) {
                         return transString;
                     }
@@ -82,7 +81,7 @@ export default class AppMixins {
             return;
         }
 
-        this.addFilter('pluginlowercase_top_menus', this.appVars.slug, function (menus) {
+        this.addFilter('galantis_typesense_top_menus', this.appVars.slug, function (menus) {
             menus = menus.filter(m => m.route !== route.name);
             menus.push({
                 route: route.name,
@@ -91,7 +90,7 @@ export default class AppMixins {
             return menus;
         });
 
-        this.addFilter('pluginlowercase_global_routes', this.appVars.slug, function (routes) {
+        this.addFilter('galantis_typesense_global_routes', this.appVars.slug, function (routes) {
             routes = routes.filter(r => r.name !== route.name);
             routes.push(route);
             return routes;
@@ -119,7 +118,7 @@ export default class AppMixins {
     }
 
     saveData(key, data) {
-        let existingData = window.localStorage.getItem('__pluginlowercase_data');
+        let existingData = window.localStorage.getItem('__galantis_typesense_data');
 
         if (!existingData) {
             existingData = {};
@@ -129,11 +128,11 @@ export default class AppMixins {
 
         existingData[key] = data;
 
-        window.localStorage.setItem('__pluginlowercase_data', JSON.stringify(existingData));
+        window.localStorage.setItem('__galantis_typesense_data', JSON.stringify(existingData));
     }
 
     getData(key, defaultValue = false) {
-        let existingData = window.localStorage.getItem('__pluginlowercase_data');
+        let existingData = window.localStorage.getItem('__galantis_typesense_data');
         existingData = JSON.parse(existingData);
         if (!existingData) {
             return defaultValue;

@@ -1,24 +1,23 @@
 import routes from './routes';
 import { createWebHashHistory, createRouter } from 'vue-router'
-import PluginClassName from './Bits/AppMixins';
+import galantisTypesense from './Bits/AppMixins';
 
 const router = createRouter({
     history: createWebHashHistory(),
     routes
 });
 
+const framework = new galantisTypesense();
 
-const framework = new PluginClassName();
+framework.app.config.globalProperties.appVars = window.galantisTypesenseAdmin;
 
-framework.app.config.globalProperties.appVars = window.PluginClassNameAdmin;
-
-window.PluginClassNameApp = framework.app.use(router).mount('#pluginlowercase_app');
+window.galantisTypesenseApp = framework.app.use(router).mount('#galantis_typesense_app');
 
 router.afterEach((to, from) => {
-    jQuery('.pluginlowercase_menu_item').removeClass('active');
+    jQuery('.galantis_typesense_menu_item').removeClass('active');
     let active = to.meta.active;
     if(active) {
-        jQuery('.pluginlowercase_main-menu-items').find('li[data-key='+active+']').addClass('active');
+        jQuery('.galantis_typesense_main-menu-items').find('li[data-key='+active+']').addClass('active');
     }
 });
 

@@ -3,14 +3,14 @@
 /**
  * Autoloader
  *
- * @package PluginClassName
+ * @package Galantis Typesense
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 include 'global_functions.php';
-if (!function_exists('PluginClassNameAutoload')) {
+if (!function_exists('GalantisTypesenseAutoload')) {
     /**
      * Plugin autoloader.
      *
@@ -22,10 +22,10 @@ if (!function_exists('PluginClassNameAutoload')) {
      *
      * @param $class
      */
-    function PluginClassNameAutoload($class)
+    function GalantisTypesenseAutoload($class)
     {
         // Do not load unless in plugin domain.
-        $namespace = 'PluginClassName';
+        $namespace = 'Galantis\Typesense';
         if (strpos($class, $namespace) !== 0) {
             return;
         }
@@ -45,5 +45,5 @@ if (!function_exists('PluginClassNameAutoload')) {
         }
     }
     // Register the autoloader.
-    spl_autoload_register('PluginClassNameAutoload');
+    spl_autoload_register('GalantisTypesenseAutoload');
 }

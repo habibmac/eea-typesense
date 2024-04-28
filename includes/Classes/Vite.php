@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginClassName\Classes;
+namespace Galantis\Typesense\Classes;
 
 use Exception;
 
@@ -128,7 +128,7 @@ class Vite
 
     public static function isDevMode(): bool
     {
-        return defined('PLUGIN_CONST_DEVELOPMENT') && PLUGIN_CONST_DEVELOPMENT === 'yes';
+        return defined('GALANTIS_TYPESENSE_DEVELOPMENT') && GALANTIS_TYPESENSE_DEVELOPMENT === 'yes';
     }
 
     private static function getDevPath(): string
@@ -138,7 +138,7 @@ class Vite
 
     private static function getAssetPath(): string
     {
-        return PLUGIN_CONST_URL . 'assets/';
+        return GALANTIS_TYPESENSE_URL . 'assets/';
     }
 
     private static function getProductionFilePath($file): string

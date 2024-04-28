@@ -1,7 +1,7 @@
 {
-    "name": "plugin_name",
+    "name": "galantis-typesense",
     "version": "1.0.0",
-    "description": "A WordPress boilerplate plugin using vue.js",
+    "description": "A Vue 3 based for Galantis Typesense",
     "scripts": {
         "dev": "node src/env/development_mode.js && vite",
         "watch": "npm run dev",
