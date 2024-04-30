@@ -8,26 +8,12 @@ lerna-debug.log*
 
 
 ## specific
-
 node_modules
-assets
-svn
-svn.php
-pro_build.php
+vendor
+/assets
 *.zip
 .DS_Store
-package-lock.json
-
-.idea
 node_modules
-svn/*
-dist/
-assets/*
-!assets/index.php
-package-lock.json
-app/Views/public/Js/*
-
-
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
