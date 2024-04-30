@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<ruleset name="WPGM">
+    <description>Wordpress with custom rules of GreenMotion Dev.</description>
+    <arg name="tab-width" value="4"/>
+    <arg name="encoding" value="utf-8"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="8"/>
+    <rule ref="Wordpress-Extra">
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+        <exclude name="WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid"/>
+        <exclude name="WordPress.NamingConventions.ValidFunctionName.UsedPropertyNotSnakeCase"/>
+        <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.VariableNameInvalid"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.PropertyNotSnakeCase"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.PropertyNameInvalid"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.PrivatePropertyNotSnakeCase"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.PrivateVariableNameInvalid"/>
+        <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+        <exclude name="Generic.Files.LineLength"/>
+        <exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines"/>
+        <exclude name="Squiz.Classes.ValidClassName.NotCamelCaps"/>
+        <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
+        <exclude name="PEAR.Commenting.FileComment.Missing"/>
+        <rule ref="Internal.NoCodeFound">
+            <severity>0</severity>
+        </rule>
+    </rule>    
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="true"/>
+        </properties>
+    </rule>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/path/to/excluded/folder/*</exclude-pattern>
+</ruleset>
