@@ -9,8 +9,6 @@ import {
     removeAllActions
 } from '@wordpress/hooks';
 
-const appStartTime = new Date();
-
 export default class AppMixins {
     constructor() {
         this.doAction = doAction;
@@ -20,7 +18,7 @@ export default class AppMixins {
         this.removeAllActions = removeAllActions;
         //
         this.AJAX = ajax;
-        this.appVars = window.galantisTypesenseAdmin;
+        this.appVars = window.galantisToolkitAdmin;
         this.app = this.extendVueConstructor();
     }
 
@@ -49,7 +47,7 @@ export default class AppMixins {
                     document.title = title;
                 },
                 $t(str) {
-                    let transString = galantisTypesenseAdmin.i18n[str];
+                    let transString = galantisToolkitAdmin.i18n[str];
                     if (transString) {
                         return transString;
                     }
@@ -81,7 +79,7 @@ export default class AppMixins {
             return;
         }
 
-        this.addFilter('galantis_typesense_top_menus', this.appVars.slug, function (menus) {
+        this.addFilter('galantis_toolkit_top_menus', this.appVars.slug, function (menus) {
             menus = menus.filter(m => m.route !== route.name);
             menus.push({
                 route: route.name,
@@ -90,7 +88,7 @@ export default class AppMixins {
             return menus;
         });
 
-        this.addFilter('galantis_typesense_global_routes', this.appVars.slug, function (routes) {
+        this.addFilter('galantis_toolkit_global_routes', this.appVars.slug, function (routes) {
             routes = routes.filter(r => r.name !== route.name);
             routes.push(route);
             return routes;
@@ -118,7 +116,7 @@ export default class AppMixins {
     }
 
     saveData(key, data) {
-        let existingData = window.localStorage.getItem('__galantis_typesense_data');
+        let existingData = window.localStorage.getItem('__galantis_toolkit_data');
 
         if (!existingData) {
             existingData = {};
@@ -128,11 +126,11 @@ export default class AppMixins {
 
         existingData[key] = data;
 
-        window.localStorage.setItem('__galantis_typesense_data', JSON.stringify(existingData));
+        window.localStorage.setItem('__galantis_toolkit_data', JSON.stringify(existingData));
     }
 
     getData(key, defaultValue = false) {
-        let existingData = window.localStorage.getItem('__galantis_typesense_data');
+        let existingData = window.localStorage.getItem('__galantis_toolkit_data');
         existingData = JSON.parse(existingData);
         if (!existingData) {
             return defaultValue;

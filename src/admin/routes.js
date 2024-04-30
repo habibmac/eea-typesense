@@ -1,17 +1,23 @@
-import Admin from './Components/Admin.vue';
-import Contact from './Components/Contact.vue';
+import Collections from './Components/Collections.vue';
+import Server from './Components/Server.vue';
+import Logs from './Components/Logs.vue';
 
 export default [{
         path: '/',
-        name: 'dashboard',
-        component: Admin,
+        name: 'collections',
+        component: Collections,
         meta: {
-            active: 'dashboard'
+            active: 'collections'
         },
     },
     {
-        path: '/contact',
-        name: 'contact',
-        component: Contact
-    }
+        path: '/server',
+        name: 'server',
+        component: Server
+    },
+    {
+        path: '/logs',
+        name: 'logs',
+        component: Logs
+    },
 ];

@@ -1,12 +1,10 @@
 <script setup type="module">
-
-import Dashboard from './Dashboard.vue';
-
+import Collections from './Collections.vue';
 </script>
 
 <template>
   <div>
-        <Dashboard/>
+        <Collections/>
   </div>
 </template>
 

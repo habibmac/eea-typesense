@@ -1,0 +1,12 @@
+a:focus {
+    box-shadow: none;
+}
+
+.main-menu {
+    @apply bg-black;
+    li.galantis_toolkit_menu_item {
+        &.active {
+            @apply bg-blue-500 text-white;
+        }
+    }
+}

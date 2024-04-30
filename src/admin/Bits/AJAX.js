@@ -1,7 +1,7 @@
-const request = function(method, route, data = {}) {
-    const url = `${window.GalantisTypesenseAdmin.rest.url}/${route}`;
+const request = (method, route, data = {}) => {
+    const url = `${window.galantisToolkitAdmin.rest.url}/${route}`;
 
-    const headers = {'X-WP-Nonce': window.GalantisTypesenseAdmin.rest.nonce};
+    const headers = {'X-WP-Nonce': window.galantisToolkitAdmin.rest.nonce};
 
     if (['PUT', 'PATCH', 'DELETE'].indexOf(method.toUpperCase()) !== -1) {
         headers['X-HTTP-Method-Override'] = method;
@@ -37,6 +37,6 @@ export default {
 jQuery(document).ajaxSuccess((event, xhr, settings) => {
     const nonce = xhr.getResponseHeader('X-WP-Nonce');
     if (nonce) {
-        window.GalantisTypesenseAdmin.rest.nonce = nonce;
+        window.galantisToolkitAdmin.rest.nonce = nonce;
     }
 });
